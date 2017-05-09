@@ -1,0 +1,24 @@
+q=function(u,p){
+	return(p*exp(u)/(1-p+p*exp(u)))
+}
+K=function(u,n,p){
+	return(sum(n*log(1-p+p*exp(u))))
+}
+Kp=function(u,n,p){
+	return(sum(n*q(u,p)))
+}
+Kpp=function(u,n,p){
+	q_=q(u,p)
+	return(sum(n*q_*(1-q_)))
+}
+Kppp=function(u,n,p){
+	q_=q(u,p)
+	return(sum(n*q_*(1-q_)*(1-2*q_)))
+}
+Kpppp=function(u,n,p){
+	q_=q(u,p)
+	return(sum(n*q_*(1-q_)*(1-6*q_*(1-q_))))
+}
+saddlepoint=function(u,n,p,s){
+	return(Kp(u,n,p)-s)
+}

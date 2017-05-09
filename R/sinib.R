@@ -1,36 +1,45 @@
-q=function(u,p){
-	return(p*exp(u)/(1-p+p*exp(u)))
-}
-K=function(u,n,p){
-	return(sum(n*log(1-p+p*exp(u))))
-}
-Kp=function(u,n,p){
-	return(sum(n*q(u,p)))
-}
-Kpp=function(u,n,p){
-	q_=q(u,p)
-	return(sum(n*q_*(1-q_)))
-}
-Kppp=function(u,n,p){
-	q_=q(u,p)
-	return(sum(n*q_*(1-q_)*(1-2*q_)))
-}
-Kpppp=function(u,n,p){
-	q_=q(u,p)
-	return(sum(n*q_*(1-q_)*(1-6*q_*(1-q_))))
-}
+source('R/utils.R')
 
-saddlepoint=function(u,n,p,s){
-	return(Kp(u,n,p)-s)
-}
-
-psinib=function(q,size,prob,lower.tail=TRUE,log.p=FALSE,method=c('Daniels','Butler')){
-	
-	method=match.arg(method)
+#' Distribution of Sum of Independent Non-identical Binomial Random Variables
+#' 
+#' Density, distribution function, quantile function, and random number generation for the sum of independent non-identical binomial random variables 
+#' 
+#' Suppose S is a random variable formed by summing R independent non-identical random variables \eqn{X_r}{Xr}, \eqn{r = 1,...,R}. \deqn{S = \sum_{r=1}^R X_r}{S = X1+X2+...XR}
+#' \code{size} and \code{prob} should both be vectors of length R. The first elements of \code{size} and \code{prob} specifies \eqn{X_1}{X1}, the second elements specifies \eqn{X_2}{X2}, so on and so forth. The probability \eqn{F(S)} is calculated using Daniels' second-order continuity-corrected saddlepoint approximation. The density \eqn{p(S)} is calculated using second-order saddlepoint mass approximation with Butler's normalization. 
+#' 
+#' @param x,q integer vector of quantiles.
+#' @param p numeric vector of probabilities. 
+#' @param n numeric scalar to indicate number of observations.
+#' @param size integer vector of number of trials (see detail).
+#' @param prob numeric vector of success probabilities (see detail).
+#' @param lower.tail logical; if TRUE, probabilities are \eqn{P[S<=s]}, otherwise, \eqn{P[S>s]}.
+#' @param log,log.p logical; if TRUE, probabilities p are given as log(p).
+#' @return qsinib gives the cumulative distribution of sum of independent non-identical random variables. 
+#' @source See Eisinga et al (2012) Saddlepoint approximations for the sum of independent non-identically distributed binomial random variables. Available from \url{http://onlinelibrary.wiley.com/doi/10.1111/stan.12002/full}
+#' 
+#' @examples
+#' # Calculating the density and probability:
+#' size <- as.integer(c(12, 14, 4, 2, 20, 17, 11, 1, 8, 11))
+#' prob <- c(0.074, 0.039, 0.095, 0.039, 0.053, 0.043, 0.067, 0.018, 0.099, 0.045)
+#' q <- x <- as.integer(seq(1, 19, 2))
+#' dsinib(x, size, prob)
+#' psinib(q, size, prob)
+#' 
+#' # Generating random samples:
+#' rsinib(100, size, prob)
+#' 
+#' # Calculating quantiles:
+#' p <- psinib(q, size, prob) 
+#' qsinib(p, size, prob)
+#' 
+#' @export
+psinib=function(q,size,prob,lower.tail=TRUE,log.p=FALSE){
 	
 	n=size
 	p=prob
 	s=q
+	stopifnot(is.integer(n))
+	stopifnot(is.integer(s))
 	
 	w=function(u,n,p){
 		K_=K(u,n,p)
@@ -71,6 +80,7 @@ psinib=function(q,size,prob,lower.tail=TRUE,log.p=FALSE,method=c('Daniels','Butl
 		p3_=p3(u,n,p)
 		return(p3_-dnorm(w_)*((1/u2_)*((1/8)*k4_-(5/24)*k3_^2)-1/(u2_^3)-k3_/(2*u2_^2)+1/w_^3))
 	}
+	
 	calc_p4=function(s){
 		if (s == sum(n)){
 			p4_=prod(p^n)
@@ -90,28 +100,27 @@ psinib=function(q,size,prob,lower.tail=TRUE,log.p=FALSE,method=c('Daniels','Butl
 		return(p4_)
 	}
 	
-	if (method=='Daniels'){
-		psinib_=sapply(s,calc_p4)
-		print(psinib_)
-	} else {
-		dsinib_=dsinib(x=0:sum(size),size,prob)
-		psinib_=rep(0,length(dsinib_))
-		for (i in 1:length(dsinib_)){
-			if (i==1){
-				psinib_[i]=dsinib_[i]
-			} else {
-				psinib_[i]=dsinib_[i]+psinib_[i-1]
-			}
-		}
-	}  
-	
+
+	p4_=sapply(s+1,calc_p4)
+
 	if (lower.tail){
-		return(psinib_[s+1])
+		if (log.p){
+			return(log(1-p4_))
+		} else {
+			return(1-p4_)	
+		}
 	} else {
-		return(1-psinib_[s+1])
+		if (log.p){
+			return(log(p4_))
+		} else {
+			return(p4_)
+		}
+			
 	}
 }
 
+#' @rdname psinib
+#' @export
 dsinib=function(x,size,prob,log=FALSE){
 	
 	n=size
@@ -143,13 +152,27 @@ dsinib=function(x,size,prob,log=FALSE){
 	}
 	p2b_=p2b(n,p,p2_)
 	
-	return(p2b_[s+1])	
+	if (log){
+		return(log(p2b_[s+1]))
+	} else {
+		return(p2b_[s+1])
+	}
+		
 }
 
-
-size=n
-prob=p
+#' @rdname psinib
+#' @export
 rsinib=function(n,size,prob){
-	psinib(q = 0,size = size,prob = prob)
+	cdf=psinib(q=0:sum(size),size = size,prob = prob)
+	x=runif(n,0,1)
+	y=sapply(x,function(x) {min(which(cdf>=x))-1})
+	return(y)
 }
 
+#' @rdname psinib
+#' @export
+qsinib=function(p,size,prob){
+	cdf=psinib(q=0:sum(size),size = size,prob = prob)
+	y=sapply(p,function(x) {min(which(cdf>=x))-1})
+	return(y)
+}
