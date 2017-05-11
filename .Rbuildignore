@@ -1,3 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-sinib.Rproj
+^sinib\.Rproj$
+^NEWS\.md$
+^cran-comments\.md$
