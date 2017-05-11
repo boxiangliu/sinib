@@ -1,3 +1,5 @@
+library(sinib)
+
 # Small size, small probability:
 size=as.integer(c(12, 14, 4, 2, 20, 17, 11, 1, 8, 11))
 prob=c(0.074, 0.039, 0.095, 0.039, 0.053, 0.043, 0.067, 0.018, 0.099, 0.045)
