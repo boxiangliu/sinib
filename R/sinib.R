@@ -1,4 +1,11 @@
 source('R/utils.R')
+#' @importFrom stats uniroot
+#' @importFrom stats dnorm
+#' @importFrom stats pnorm
+#' @importFrom stats rbinom
+#' @importFrom stats runif
+NULL
+
 
 #' Distribution of Sum of Independent Non-identical Binomial Random Variables
 #' 
