@@ -5,7 +5,7 @@
 \alias{dsinib}
 \alias{rsinib}
 \alias{qsinib}
-\title{Distribution of Sum of Independent Non-identical Binomial Random Variables}
+\title{Distribution of Sum of Independent Non-Identical Binomial Random Variables}
 \source{
 See Eisinga et al (2012) Saddlepoint approximations for the sum of independent non-identically distributed binomial random variables. Available from \url{http://onlinelibrary.wiley.com/doi/10.1111/stan.12002/full}
 }

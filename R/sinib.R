@@ -7,7 +7,7 @@ source('R/utils.R')
 NULL
 
 
-#' Distribution of Sum of Independent Non-identical Binomial Random Variables
+#' Distribution of Sum of Independent Non-Identical Binomial Random Variables
 #' 
 #' Density, distribution function, quantile function, and random number generation for the sum of independent non-identical binomial random variables 
 #' 
