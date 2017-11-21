@@ -47,7 +47,8 @@ psinib=function(q,size,prob,lower.tail=TRUE,log.p=FALSE){
 	s=q
 	stopifnot(is.integer(n))
 	stopifnot(is.integer(s))
-	
+	mu=sum(n*p)
+
 	w=function(u,n,p){
 		K_=K(u,n,p)
 		Kp_=Kp(u,n,p)
@@ -57,10 +58,10 @@ psinib=function(q,size,prob,lower.tail=TRUE,log.p=FALSE){
 		Kpp_=Kpp(u,n,p)
 		return((1-exp(-u))*sqrt(Kpp_))
 	}
-	p3=function(u,n,p){
+	p3=function(u,n,p,s,mu){
 		w_=w(u,n,p)
 		u1_=u1(u,n,p)
-		if (u1_==0) {
+		if (u1_==0 | s==mu) {
 			Kpp0=sum(n*p*(1-p))
 			Kppp0=sum(n*p*(1-p)*(1-2*p))
 			return(1/2-(2*pi)^(-1/2)*((1/6)*Kppp0*Kpp0^(-3/2)-(1/2)*Kpp0^(-1/2)))
@@ -79,13 +80,19 @@ psinib=function(q,size,prob,lower.tail=TRUE,log.p=FALSE){
 	k4=function(u,n,p){
 		return(Kpppp(u,n,p)*Kpp(u,n,p)^(-2))
 	}
-	p4=function(u,n,p){
+	p4=function(u,n,p,s,mu){
 		u2_=u2(u,n,p)
 		k3_=k3(u,n,p)
 		k4_=k4(u,n,p)
 		w_=w(u,n,p)
-		p3_=p3(u,n,p)
-		return(p3_-dnorm(w_)*((1/u2_)*((1/8)*k4_-(5/24)*k3_^2)-1/(u2_^3)-k3_/(2*u2_^2)+1/w_^3))
+		p3_=p3(u,n,p,s,mu)
+		u1_=u1(u,n,p)
+		if (u1_==0 | s==mu){
+			return(p3_)
+		} else {
+			return(p3_-dnorm(w_)*((1/u2_)*((1/8)*k4_-(5/24)*k3_^2)-1/(u2_^3)-k3_/(2*u2_^2)+1/w_^3))
+		}
+		
 	}
 	
 	calc_p4=function(s){
@@ -101,7 +108,7 @@ psinib=function(q,size,prob,lower.tail=TRUE,log.p=FALSE){
 				S=colSums(mat)
 				p4_=sum(S>=s)/length(S)
 			} else {
-				p4_=p4(u_hat,n,p)
+				p4_=p4(u_hat,n,p,s,mu)
 			}
 		}
 		return(p4_)
