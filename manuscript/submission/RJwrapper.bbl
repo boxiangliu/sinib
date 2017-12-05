@@ -1,0 +1,90 @@
+\begin{thebibliography}{12}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Arthur~Woodward and Palmer(1997)]{ArthurWoodward:1997en}
+J.~Arthur~Woodward and C.~G.~S. Palmer.
+\newblock {On the exact convolution of discrete random variables}.
+\newblock \emph{Applied Mathematics and Computation}, 83\penalty0 (1):\penalty0
+  69--77, Apr. 1997.
+
+\bibitem[Benneyan and Ta{\c s}eli(2010)]{Benneyan:2010ex}
+J.~C. Benneyan and A.~Ta{\c s}eli.
+\newblock {Exact and approximate probability distributions of evidence-based
+  bundle composite compliance measures}.
+\newblock \emph{Health Care Management Science}, 13\penalty0 (3):\penalty0
+  193--209, Feb. 2010.
+
+\bibitem[Butler and Stephens(2016)]{Butler:2016cj}
+K.~Butler and M.~A. Stephens.
+\newblock {The Distribution of a Sum of Independent Binomial Random Variables}.
+\newblock \emph{Methodology and Computing in Applied Probability}, 19\penalty0
+  (2):\penalty0 557--571, Dec. 2016.
+
+\bibitem[Daniels(1954)]{Daniels:1954hy}
+H.~E. Daniels.
+\newblock {Saddlepoint Approximations in Statistics}.
+\newblock \emph{The Annals of Mathematical Statistics}, 25\penalty0
+  (4):\penalty0 631--650, Dec. 1954.
+
+\bibitem[Daniels(1987)]{Anonymous:0hq1uBaf}
+H.~E. Daniels.
+\newblock {Tail Probability Approximations}.
+\newblock \emph{International Statistical Review / Revue Internationale de
+  Statistique}, 55\penalty0 (1):\penalty0 37--48, Apr. 1987.
+
+\bibitem[Eisinga et~al.(2013)Eisinga, Te~Grotenhuis, and
+  Pelzer]{Eisinga:2013da}
+R.~Eisinga, M.~Te~Grotenhuis, and B.~Pelzer.
+\newblock {Saddlepoint approximations for the sum of independent
+  non-identically distributed binomial random variables}.
+\newblock \emph{Statistica Neerlandica}, 67\penalty0 (2):\penalty0 190--201,
+  May 2013.
+
+\bibitem[Johnson et~al.(2005)Johnson, Kemp, and Kotz]{Johnson:2005hg}
+N.~L. Johnson, A.~W. Kemp, and S.~Kotz.
+\newblock \emph{{Univariate Discrete Distributions}}.
+\newblock Johnson/Univariate Discrete Distributions. John Wiley {\&} Sons,
+  Inc., Hoboken, NJ, USA, Jan. 2005.
+
+\bibitem[Jolayemi(1992)]{Jolayemi:1992jz}
+J.~K. Jolayemi.
+\newblock {A unified approximation scheme for the convolution of independent
+  binomial variables}.
+\newblock \emph{Applied Mathematics and Computation}, 49\penalty0
+  (2-3):\penalty0 269--297, June 1992.
+
+\bibitem[Kotz and Johnson(1984)]{Anonymous:iz}
+S.~Kotz and N.~L. Johnson.
+\newblock {Effects of False and Incomplete Identification of Defective Items on
+  the Reliability of Acceptance Sampling}.
+\newblock \emph{Operations Research}, 32\penalty0 (3):\penalty0 575--583, May
+  1984.
+
+\bibitem[Lugannani and Rice(1980)]{Lugannani:1980jm}
+R.~Lugannani and S.~Rice.
+\newblock {Saddle Point Approximation for the Distribution of the Sum of
+  Independent Random Variables}.
+\newblock \emph{Advances in Applied Probability}, 12\penalty0 (2):\penalty0
+  475, June 1980.
+
+\bibitem[Schmidt et~al.(2015)Schmidt, Zhang, Zhou, Chen, Mohlke, Chen, and
+  Willer]{Schmidt:2015ca}
+E.~M. Schmidt, J.~Zhang, W.~Zhou, J.~Chen, K.~L. Mohlke, Y.~E. Chen, and C.~J.
+  Willer.
+\newblock {GREGOR: evaluating global enrichment of trait-associated variants in
+  epigenomic features using a systematic, data-driven approach}.
+\newblock \emph{Bioinformatics}, 31\penalty0 (16):\penalty0 2601--2606, Aug.
+  2015.
+
+\bibitem[Yili()]{Yili:al1vGrvv}
+H.~Yili.
+\newblock {On Computing the Distribution Function for the Sum of Independent
+  and Non-identical Random Indicators }.
+\newblock URL
+  \url{https://pdfs.semanticscholar.org/fe97/c1358ec01c86cb8bbc4574fa064748f37e94.pdf}.
+
+\end{thebibliography}
