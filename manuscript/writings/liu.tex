@@ -1,4 +1,6 @@
 % !TeX root = RJwrapper.tex
+\graphicspath{{fig/}}
+
 \title{Approximating the Sum of Independent Non-Identical Binomial Random Variables}
 \author{by Boxiang Liu and Thomas Quertermous}
 
@@ -16,7 +18,7 @@ Computating the exact distribution of the sum of non-identical independent binom
 
 Despite the theoretical development of aforementioned approximate solutions, a software implementation in R is still lacking. The \textbf{stats} package includes functions for the most frequently used distribution such as \textbf{dbinom} and \textbf{dnorm}. In addition, it also include less frequent distributions such as \textbf{pbirthday}. However, it does not contain functions for distribution of sum of independent non-identical binomials. Another package, \textbf{EQL}, provides a \textbf{saddlepoint} function to approximate the mean of i.i.d random variables. However, this function does not apply to the case where the random variables are not identical. In this paper, we address this deficiency by implementing a saddlepoint approximation in the open source package \textbf{sinib} (sum of independent non-identical binomial random variables). The package provides the standard suite of probability (\textbf{psinib}), distribution (\textbf{dsinib}), quantile (\textbf{qsinib}), and random number generator (\textbf{rsinib}) functions. The package is accompanied by a detailed documentation, and can be easily integrated into existing applications.
 
-The remainder of this paper is organized as follows, section 2 formulates the distribution of sum of independent non-identical binomial random variables. Section 3 gives an overview of the saddlepoint approximation. Section 4 describes the design and implementation of the \textbf{sinib} package. Section 5 uses two examples to illustrate its usage. As a bonus, we assess the accuracty of saddlepoint approximation in both examples. Section 6 draws final conclusion and discusses possible future development of the package. 
+The remainder of this paper is organized as follows, section 2 formulates the distribution of sum of independent non-identical binomial random variables. Section 3 gives an overview of the saddlepoint approximation. Section 4 describes the design and implementation of the \textbf{sinib} package. Section 5 uses two examples to illustrate its usage. As a bonus, we assess the accuracy of saddlepoint approximation in both examples. Section 6 draws final conclusion and discusses possible future development of the package. 
 
 \section{2 Overview of the distribution}
 
@@ -202,8 +204,8 @@ ggplot(data,aes(x=truth,y=approx,color=as.character(p)))+
 	xlab('Truth')+ylab('Approximation')
 \end{example}
 
-\begin{figure}[h]
-\includegraphics[width=\textwidth]{/Users/boshliu/Documents/tools/sinib/manuscript/figures/truth_vs_approximation.pdf}
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{truth_vs_approximation.pdf}
 \caption{Comparison of CDF between truth and approximation}
 \label{fig:1}
 \end{figure}
@@ -221,8 +223,8 @@ p2=ggplot(data[m==100&n==100],
 	geom_vline(xintercept=200*0.9,color='blue',linetype='longdash')
 \end{example}
 
-\begin{figure}[h]
-\includegraphics[width=\textwidth]{/Users/boshliu/Documents/tools/sinib/manuscript/figures/truth_minus_approximation.pdf}
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{truth_minus_approximation.pdf}
 \caption{Difference in CDF between the ground truth and the approximation}
 \label{fig:2}
 \end{figure}
@@ -248,8 +250,8 @@ ggplot(data,aes(x=truth,y=approx,color=as.character(p)))+
 	xlab('Truth')+ylab('Approximation')
 \end{example}
 
-\begin{figure}[h]
-\includegraphics[width=\textwidth]{/Users/boshliu/Documents/tools/sinib/manuscript/figures/truth_vs_approximation_pdf.pdf}
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{truth_vs_approximation_pdf.pdf}
 \caption{Comparison of PDF between truth and approximation}
 \label{fig:3}
 \end{figure}
@@ -268,8 +270,8 @@ p4=ggplot(data[m==100&n==100],
 	geom_vline(xintercept=200*0.9,color='blue',linetype='longdash')
 \end{example}
 
-\begin{figure}[h]
-\includegraphics[width=\textwidth]{/Users/boshliu/Documents/tools/sinib/manuscript/figures/truth_minus_approximation_pdf.pdf}
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{truth_minus_approximation_pdf.pdf}
 \caption{Difference in PDF between truth and approximation}
 \label{fig:4}
 \end{figure}
@@ -315,8 +317,8 @@ ggplot(merged,aes(pdf_truth,pdf_approx))+
 	xlab('Truth')+ylab('Approx')
 \end{example}
 
-\begin{figure}[h]
-\includegraphics[width=\textwidth]{/Users/boshliu/Documents/tools/sinib/manuscript/figures/health_monitor_truth_vs_approx_pdf.pdf}
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{health_monitor_truth_vs_approx_pdf.pdf}
 \caption{Comparison of PDF between truth and approximation}
 \label{fig:5}
 \end{figure}
@@ -333,8 +335,8 @@ ggplot(merged,aes(s,diff))+
 	xlab('Quantile')+ylab('Truth-Approx')
 \end{example}
 
-\begin{figure}[h]
-\includegraphics[width=\textwidth]{/Users/boshliu/Documents/tools/sinib/manuscript/figures/health_monitor_truth_minus_approx_pdf.pdf}
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{health_monitor_truth_minus_approx_pdf.pdf}
 \caption{Comparison of PDF between truth and approximation}
 \label{fig:6}
 \end{figure}
@@ -364,7 +366,7 @@ In this paper, we presented an implementation of the saddlepoint method to appro
 
 In the future, we aim to explore other approximation methods such as the Kolmogorov approximation and the Pearson curve approximation described by \cite{Butler:2016cj}.
 
-\bibliography{RJreferences}
+\bibliography{liu}
 
 \address{Boxiang Liu\\
   Stanford University\\
