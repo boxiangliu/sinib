@@ -2,7 +2,7 @@ Package: sinib
 Type: Package
 Title: Sum of Independent Non-Identical Binomial Random Variables
 Version: 1.0.1
-Date: 2017-04-20
+Date: 2018-04-20
 Author: Boxiang Liu
 Maintainer: Boxiang Liu <jollier.liu@gmail.com>
 Description: Density function, distribution function, quantile function 
