@@ -41,12 +41,17 @@ NULL
 #' 
 #' @export
 psinib=function(q,size,prob,lower.tail=TRUE,log.p=FALSE){
+	if (!is.integer(size)){
+		warning('size should be integers.')
+	}
+	if (!is.integer(q)){
+		warning('q should be integers.')
+	}
 	
-	n=size
+	n=as.integer(size)
 	p=prob
-	s=q
-	stopifnot(is.integer(n))
-	stopifnot(is.integer(s))
+	s=as.integer(q)
+
 	mu=sum(n*p)
 
 	w=function(u,n,p){
@@ -136,10 +141,15 @@ psinib=function(q,size,prob,lower.tail=TRUE,log.p=FALSE){
 #' @rdname psinib
 #' @export
 dsinib=function(x,size,prob,log=FALSE){
-	
-	n=size
+	if (!is.integer(size)){
+		warning('size should be integers.')
+	}
+	if (!is.integer(x)){
+		warning('x should be integers.')
+	}
+	n=as.integer(size)
 	p=prob
-	s=x
+	s=as.integer(x)
 	
 	p1=function(u,n,p,s){
 		return((2*pi*Kpp(u,n,p))^(-1/2)*exp(K(u,n,p)-u*s))
