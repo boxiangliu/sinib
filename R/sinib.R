@@ -9,7 +9,7 @@ NULL
 
 #' Distribution of Sum of Independent Non-Identical Binomial Random Variables
 #' 
-#' Density, distribution function, quantile function, and random number generation for the sum of independent non-identical binomial random variables 
+#' Density function, distribution function, quantile function, and random number generation for the sum of independent non-identical binomial random variables 
 #' 
 #' Suppose S is a random variable formed by summing R independent non-identical random variables \eqn{X_r}{Xr}, \eqn{r = 1,...,R}. \deqn{S = \sum_{r=1}^R X_r}{S = X1+X2+...XR}
 #' \code{size} and \code{prob} should both be vectors of length R. The first elements of \code{size} and \code{prob} specifies \eqn{X_1}{X1}, the second elements specifies \eqn{X_2}{X2}, so on and so forth. The probability \eqn{F(S)} is calculated using Daniels' second-order continuity-corrected saddlepoint approximation. The density \eqn{p(S)} is calculated using second-order saddlepoint mass approximation with Butler's normalization. 
@@ -26,9 +26,9 @@ NULL
 #' 
 #' @examples
 #' # Calculating the density and probability:
-#' size <- as.integer(c(12, 14, 4, 2, 20, 17, 11, 1, 8, 11))
+#' size <- c(12, 14, 4, 2, 20, 17, 11, 1, 8, 11)
 #' prob <- c(0.074, 0.039, 0.095, 0.039, 0.053, 0.043, 0.067, 0.018, 0.099, 0.045)
-#' q <- x <- as.integer(seq(1, 19, 2))
+#' q <- x <- seq(1, 19, 2)
 #' dsinib(x, size, prob)
 #' psinib(q, size, prob)
 #' 
@@ -41,10 +41,10 @@ NULL
 #' 
 #' @export
 psinib=function(q,size,prob,lower.tail=TRUE,log.p=FALSE){
-	if (!is.integer(size)){
+	if (!all(size == as.integer(size))){
 		warning('size should be integers.')
 	}
-	if (!is.integer(q)){
+	if (!all(q == as.integer(q))){
 		warning('q should be integers.')
 	}
 	
@@ -141,10 +141,10 @@ psinib=function(q,size,prob,lower.tail=TRUE,log.p=FALSE){
 #' @rdname psinib
 #' @export
 dsinib=function(x,size,prob,log=FALSE){
-	if (!is.integer(size)){
+	if (!all(size == as.integer(size))){
 		warning('size should be integers.')
 	}
-	if (!is.integer(x)){
+	if (!all(x == as.integer(x))){
 		warning('x should be integers.')
 	}
 	n=as.integer(size)

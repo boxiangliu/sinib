@@ -2,7 +2,7 @@
 Sum of Independent Non-Identical Binomial Random Variables
 
 ## Description
-Density, distribution function, quantile function and random generation for the sum of independent non-identical	binomial distribution with parameters `size` and `prob`.
+Density function, distribution function, quantile function and random number generation for the sum of independent non-identical	binomial distribution with parameters `size` and `prob`.
  
 ## Installation
 In R console, type 
@@ -30,3 +30,6 @@ x=c(3,20)
 dsinib(x,size,prob)
 # [1] 1.675016e-01 3.167624e-18
 ```
+
+## Citation 
+Please cite Boxiang Liu and Thomas Quertermous (2017) Approximating the Sum of Independent Non-Identical Binomial Random Variables. arXiv.

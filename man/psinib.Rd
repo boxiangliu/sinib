@@ -37,7 +37,7 @@ qsinib(p, size, prob)
 qsinib gives the cumulative distribution of sum of independent non-identical random variables.
 }
 \description{
-Density, distribution function, quantile function, and random number generation for the sum of independent non-identical binomial random variables
+Density function, distribution function, quantile function, and random number generation for the sum of independent non-identical binomial random variables
 }
 \details{
 Suppose S is a random variable formed by summing R independent non-identical random variables \eqn{X_r}{Xr}, \eqn{r = 1,...,R}. \deqn{S = \sum_{r=1}^R X_r}{S = X1+X2+...XR}
@@ -45,9 +45,9 @@ Suppose S is a random variable formed by summing R independent non-identical ran
 }
 \examples{
 # Calculating the density and probability:
-size <- as.integer(c(12, 14, 4, 2, 20, 17, 11, 1, 8, 11))
+size <- c(12, 14, 4, 2, 20, 17, 11, 1, 8, 11)
 prob <- c(0.074, 0.039, 0.095, 0.039, 0.053, 0.043, 0.067, 0.018, 0.099, 0.045)
-q <- x <- as.integer(seq(1, 19, 2))
+q <- x <- seq(1, 19, 2)
 dsinib(x, size, prob)
 psinib(q, size, prob)
 

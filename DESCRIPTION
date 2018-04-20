@@ -1,12 +1,12 @@
 Package: sinib
 Type: Package
 Title: Sum of Independent Non-Identical Binomial Random Variables
-Version: 1.0.0
-Date: 2017-05-06
+Version: 1.0.1
+Date: 2017-04-20
 Author: Boxiang Liu
 Maintainer: Boxiang Liu <jollier.liu@gmail.com>
-Description: Density, distribution function, quantile function 
-	and random generation for the sum of independent non-identical
+Description: Density function, distribution function, quantile function 
+	and random number generation for the sum of independent non-identical
 	binomial distribution with parameters \code{size} and \code{prob}.
 License: GPL-3
 RoxygenNote: 6.0.1
