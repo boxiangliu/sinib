@@ -7,7 +7,9 @@ Author: Boxiang Liu
 Maintainer: Boxiang Liu <jollier.liu@gmail.com>
 Description: Density function, distribution function, quantile function 
 	and random number generation for the sum of independent non-identical
-	binomial distribution with parameters size and prob.
+	binomial distribution with parameters size and prob. For more see: 
+	Boxiang Liu and Thomas Quertermous (2018) The R Journal 
+	<https://journal.r-project.org/archive/2018/RJ-2018-011/index.html>.
 License: GPL-3
 RoxygenNote: 6.0.1
 Suggests: knitr,
